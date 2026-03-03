@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const mongoConnect = async () => {
+export const mongoConnect = async () => {
   try {
     if (mongoose.connection.readyState === 1) return;
     
