@@ -1,4 +1,4 @@
-import { mongoConnect } from "@/lib/mongoConnect";
+import  mongoConnect  from "@/lib/mongoConnect";
 import bcrypt from "bcryptjs"; 
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
@@ -58,12 +58,12 @@ export async function POST(req) {
     const response = NextResponse.json({
       message: "Login successful",
       user: {
-        id: user._id.toString(), // ID টা স্ট্রিং করে পাঠানো ভালো
+        id: user._id.toString(), 
         username: user.username || user.name,
         email: user.email,
         role: user.role || "user",
       },
-      token: token // চাইলে টোকেন বডিতেও দিতে পারো
+      token: token 
     });
 
     // Set HttpOnly Cookie
@@ -86,8 +86,6 @@ export async function POST(req) {
       { status: 500 }
     );
   } finally {
-    // কানেকশন পুলিং ইউজ করলে close করার দরকার নেই, 
-    // তবে তোমার লজিক অনুযায়ী যদি close করতে চাও:
     // if (client) await client.close(); 
   }
 }
