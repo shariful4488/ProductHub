@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
+/* 1. Tailwind v4 manual dark mode enable */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --blue-600: #2563eb;
+
+  /* Animation variable */
+  --animation-gradient: gradient 8s linear infinite;
 }
 
+/* 2. Manual Dark Class */
+.dark {
+  --background: #020617; /* Slate 950 */
+  --foreground: #f8fafc;
+}
+
+/* 3. Theme mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Extra colors */
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 4. Gradient Animation */
+@keyframes gradient {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
   }
 }
 
+/* 5. Hero gradient text */
+.animate-gradient {
+  background-size: 200% auto;
+  animation: var(--animation-gradient);
+}
+
+/* 6. Body Styling */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 7. Optional system dark fallback */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    /* Optional fallback logic */
+  }
 }
