@@ -1,8 +1,9 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import mongoConnect  from "@/lib/mongoConnect";
+import mongoConnect from "@/lib/mongoConnect";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import mongoose from "mongoose"; // mongoose ইমপোর্ট করতে হবে
 
 export const authOptions = {
   providers: [
@@ -16,25 +17,40 @@ export const authOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Enter email and password");
         }
-        const { db } = await mongoConnect();
-        const user = await db.collection("users").findOne({ 
-          email: credentials.email.toLowerCase() 
-        });
 
-        if (!user || !user.password) {
-          throw new Error("Invalid user or login method");
+        try {
+          // ১. ডাটাবেস কানেক্ট করুন
+          await mongoConnect();
+          
+          // ২. Mongoose থেকে সরাসরি native db অবজেক্টটি নিন
+          const db = mongoose.connection.db; 
+
+          if (!db) {
+            throw new Error("Database connection failed");
+          }
+
+          const user = await db.collection("users").findOne({ 
+            email: credentials.email.toLowerCase() 
+          });
+
+          if (!user || !user.password) {
+            throw new Error("Invalid user or login method");
+          }
+
+          const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
+          if (!isPasswordValid) throw new Error("Wrong password");
+
+          return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            role: user.role || "user",
+            image: user.image || null, 
+          };
+        } catch (error) {
+          console.error("Auth Error:", error.message);
+          return null; // অথেন্টিকেশন ফেইল করলে null রিটার্ন করবে (401 দিবে)
         }
-
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
-        if (!isPasswordValid) throw new Error("Wrong password");
-
-        return {
-          id: user._id.toString(),
-          name: user.name,
-          email: user.email,
-          role: user.role || "user",
-          image: user.image || null, 
-        };
       },
     }),
   ],
