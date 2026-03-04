@@ -38,12 +38,10 @@ const ProductDetails = ({ params }) => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 pb-20 pt-24 md:pt-32 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Back Button */}
         <button onClick={() => router.back()} className="flex items-center gap-2 font-bold mb-6 text-slate-500 hover:text-blue-600 transition-colors">
           <ArrowLeft size={20} /> Back
         </button>
         
-        {/* Responsive Image Container */}
         <div className="w-full aspect-video md:h-[450px] rounded-2xl md:rounded-[2.5rem] overflow-hidden mb-8 shadow-lg border border-slate-200 dark:border-slate-800">
           <img 
             src={product.image} 

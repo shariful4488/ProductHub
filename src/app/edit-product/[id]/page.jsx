@@ -19,7 +19,6 @@ const EditProduct = () => {
         const res = await fetch(`/api/products/${id}`);
         if (res.ok) {
           const data = await res.json();
-          // ভ্যালুগুলো ফরমে বসানো
           setValue("title", data.title);
           setValue("price", data.price);
           setValue("category", data.category);

@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import mongoConnect from "@/lib/mongoConnect";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import mongoose from "mongoose"; // mongoose ইমপোর্ট করতে হবে
+import mongoose from "mongoose";
 
 export const authOptions = {
   providers: [
@@ -19,10 +19,7 @@ export const authOptions = {
         }
 
         try {
-          // ১. ডাটাবেস কানেক্ট করুন
           await mongoConnect();
-          
-          // ২. Mongoose থেকে সরাসরি native db অবজেক্টটি নিন
           const db = mongoose.connection.db; 
 
           if (!db) {
@@ -49,7 +46,7 @@ export const authOptions = {
           };
         } catch (error) {
           console.error("Auth Error:", error.message);
-          return null; // অথেন্টিকেশন ফেইল করলে null রিটার্ন করবে (401 দিবে)
+          return null; 
         }
       },
     }),

@@ -33,7 +33,7 @@ const AddProduct = () => {
       });
 
       if (res.ok) {
-        alert("Product added successfully! 🎉");
+        alert("Product added successfully! Redirecting to products page...");
         reset();
         router.push("/products");
       } else {
@@ -73,12 +73,10 @@ const AddProduct = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* Form Side */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl">
               
               <div className="space-y-4">
-                {/* Product Title */}
                 <div className="space-y-2">
                   <label className="text-sm font-bold ml-1 dark:text-slate-300 flex items-center gap-2">
                     <Package size={16} className="text-blue-500" /> Product Title

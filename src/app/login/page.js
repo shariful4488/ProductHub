@@ -25,7 +25,7 @@ const LoginPage = () => {
 
     if (result.ok) {
       router.push("/");
-      router.refresh(); // Navbar আপডেট করার জন্য
+      router.refresh(); 
     } else {
       alert(result.error || "Login failed!");
       setLoading(false);

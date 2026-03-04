@@ -72,7 +72,7 @@ export async function POST(req) {
       value: token,
       httpOnly: true,
       path: "/",
-      maxAge: 60 * 60 * 24, // 1 day
+      maxAge: 30 * 24 * 60 * 60, // 30 days
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
     });

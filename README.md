@@ -13,6 +13,9 @@ A high-performance, full-stack Asset Management solution built with **Next.js 14
 
 ---
 
+-----Live Link-----
+https://product-hub-eta-topaz.vercel.app/
+
 ## 🛠 Setup & Installation
 
 Follow these steps to get your development environment running:
@@ -35,7 +38,7 @@ MONGODB_URI=your_mongodb_connection_string
 
 # Authentication
 NEXTAUTH_SECRET=your_random_secret_string
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL=https://product-hub-eta-topaz.vercel.app/
 
 
 4. Run Development Server
