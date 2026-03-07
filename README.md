@@ -1,36 +1,34 @@
-#  Asset Management System
 
-A high-performance, full-stack Asset Management solution built with **Next.js 14**, **MongoDB**, and **Tailwind CSS**. This system is engineered with a **"Universal Table"** architecture, ensuring that every asset, price, and action button remains perfectly visible and functional on everything from an iPhone SE to a 4K monitor.
+# ProductHub 🚀
 
----
-
-##  UI/UX Highlights
-
-* **Universal Responsiveness:** Custom-built tables that scale fonts and images dynamically to eliminate horizontal scrolling on mobile devices.
-* **Modern Aesthetics:** A premium "Slate & Blue" theme featuring a clear typographic hierarchy and full **Dark Mode** support.
-* **Tactile Interactions:** Micro-interactions such as `active:scale-95` on buttons and smooth hover transitions for cards and list items.
-* **State-Driven UI:** Integrated loading states (`Loader2`), inline validation, and empty-state placeholders for a professional user experience.
+ProductHub is a modern, responsive web application built to streamline product management and browsing. It provides a seamless user experience for exploring products with advanced filtering and secure authentication.
 
 ---
 
------Live Link-----
-https://product-hub-eta-topaz.vercel.app/
+### 🛠 Technologies Used
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | Next.js 14 (App Router) |
+| **Styling** | Tailwind CSS (Dark Mode supported) |
+| **Icons** | Lucide React |
+| **Auth** | NextAuth.js |
+| **Database** | MongoDB |
 
-## 🛠 Setup & Installation
+---
 
-Follow these steps to get your development environment running:
+### ⚙️ Getting Started
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/yourusername/asset-manager.git](https://github.com/yourusername/asset-manager.git)
-cd asset-manager
+To run this project locally, follow these steps:
 
-2. Install Dependencies
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/product-hub.git](https://github.com/your-username/product-hub.git)
+Install dependencies:
+
 Bash
 npm install
-
-3. Configure Environment Variables
-Create a .env.local file in the root directory and add your credentials:
+Configure Environment Variables:
+Create a .env file in the root directory and add the following:
 
 Code snippet
 # Database
@@ -38,26 +36,17 @@ MONGODB_URI=your_mongodb_connection_string
 
 # Authentication
 NEXTAUTH_SECRET=your_random_secret_string
-NEXTAUTH_URL=https://product-hub-eta-topaz.vercel.app/
+NEXTAUTH_URL=[https://product-hub-eta-topaz.vercel.app/](https://product-hub-eta-topaz.vercel.app/)
+Run the development server:
 
-
-4. Run Development Server
 Bash
 npm run dev
-
-
-Technologies Used
-Next.js 14 (App Router)
-
-Tailwind CSS (Styling & Dark Mode)
-
-Lucide React (Iconography)
-
-NextAuth.js (Authentication)
-
-MongoDB (Database)
+🌟 Live Demo
+👉 https://product-hub-eta-topaz.vercel.app/
 
 📄 License
 This project is licensed under the MIT License.
 
-Developed with 💡 and ☕ by [Shariful Islam]
+💡 Developed by:
+Shariful Islam 💡☕
+
